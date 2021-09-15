@@ -27,6 +27,12 @@ class apiConsulta{
         }
 	
 	}
+	
+	public function saveCliente($cliente){
+		$cuenta=new consultaBase();
+		$res=$cuenta->guardarCliente($cliente);
+		echo json_encode($res);
+	}
 }
 
 ?>

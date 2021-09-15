@@ -24,8 +24,24 @@ class consultaBase extends DB {
         }
     }
 	
-	public function guardarCliente(){
-		
+	public function guardarCliente($datosCliente){
+			print_r($datosCliente);
+			$id = $datosCliente['id'];
+			$nombre = $datosCliente['nombre'];
+			$ciudad = $datosCliente['ciudad'];
+			$resultado=false;
+			try{
+				$stmt=$this->conectar->prepare("INSERT INTO clientes VALUES (?,?,?)");
+				$stmt->bindParam(1, $id);
+				$stmt->bindParam(2, $nombre);
+				$stmt->bindParam(3, $ciudad);
+				$stmt->execute();
+				$resultado=true;
+				return $resultado;
+			}catch(\PDOException $e){
+				echo "Error al insrtar";
+				print_r($e->getMessage());
+			}
 	}
 }
 ?>
