@@ -23,5 +23,9 @@ class consultaBase extends DB {
             print_r($e->getMessage());
         }
     }
+	
+	public function guardarCliente(){
+		
+	}
 }
 ?>
